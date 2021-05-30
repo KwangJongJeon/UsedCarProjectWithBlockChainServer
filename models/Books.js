@@ -7,25 +7,25 @@ const BookSchema = new mongoose.Schema({
     },
     isbn: {
         type: String,
-        required = true
+        required: true
     },
     author: {
         type: String,
         required: true
     },
     description: {
-        type: String
+        
     },
     published_date: {
         type: Date
     },
-    publisher: {
+        publisher: {
         type: String
     },
-    updated_data: {
+    updated_date: {
         type: Date,
         default: Date.now
     }
-})
+});
 
 module.exports = Book = mongoose.model('book', BookSchema);

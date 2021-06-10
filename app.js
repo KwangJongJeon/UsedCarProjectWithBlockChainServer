@@ -6,8 +6,11 @@ var cors = require('cors');
 
 // routes
 const books = require('./routes/api/books');
-
+const components = require('./routes/api/components');
 const app = express();
+const fs = require('fs');
+const path = require('path')
+
 
 //body-parser
 app.use(bodyParser.urlencoded({extended:true}));
@@ -23,6 +26,7 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 // use Routes
 app.use('/api/books', books);
+app.use('/api/components', components);
 
 const port = process.env.PORT || 8082;
 

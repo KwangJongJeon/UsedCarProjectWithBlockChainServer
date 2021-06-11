@@ -30,6 +30,16 @@ const CarPostSchema = new mongoose.Schema({
         type: String
     },
 
+    IsInitialInspected: {
+        type: Boolean,
+        default: false
+    },
+
+    BlockChainAddress: {
+        type: String,
+        required: true
+    },
+
     updated_date: {
         type: Date,
         default: Date.now

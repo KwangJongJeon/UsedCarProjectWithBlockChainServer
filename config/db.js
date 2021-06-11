@@ -11,7 +11,7 @@ const connectDB = async () => {
                 useUnifiedTopology: true
             }
         );
-
+        mongoose.set('useFindAndModify', false);
         console.log("MongoDB is Connected...");
     } catch (err) {
         console.error(err.message);

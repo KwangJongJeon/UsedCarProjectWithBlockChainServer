@@ -53,6 +53,7 @@ router.post('/', (req, res) => {
         const carNum = req.body.carNum;
         const carPrice = req.body.carPrice;
         const description = req.body.description;
+        const blockChainAddress = req.body.blockChainAddress;
         const carImg = req.file.filename;
 
         const newCarPostData = {
@@ -61,6 +62,7 @@ router.post('/', (req, res) => {
             carNum,
             carPrice,
             description,
+            blockChainAddress,
             carImg
         }
 
@@ -74,6 +76,16 @@ router.post('/', (req, res) => {
     })
 })
 
+// @route PUT api/sellCarPosts/setCheckTrue/:id
+// @description Update isInitialInspected field of CarPosts model. id is Car's blockChain address
+// @access Public
+router.put('/setCheckTrue/:id', (req, res) => {
+    console.log('put request to sellCarPosts/setCheckTrue/:id api is arrived!')
+    CarPost.findOneAndUpdate({ blockChainAddress: req.params.id }, { isInitialInspected: true })
+        .then(carPost => res.json({ msg: 'Updated Successfully' }))
+        .catch(err => 
+            res.status(400).json({ error: 'Unable to update the database'}))
+})
 
 // @route PUT api/sellCarPosts/:id
 // @description Update carPost

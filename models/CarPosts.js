@@ -5,16 +5,34 @@ const CarPostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
     model: {
         type: String,
         required: true
     },
-    desc: {
+
+    carNum: {
+        type: String,
+        required: true,
+    },
+
+    carPrice: {
+        type: String,
+        required: true
+    },
+
+    carImg: {
+       data: Buffer,
         type: String
     },
-    carImg: {
-        data: buffer,
-        contentType: String
+    
+    description: {
+        type: String
+    },
+
+    updated_date: {
+        type: Date,
+        default: Date.now
     }
 });
 

@@ -10,7 +10,7 @@ const router = express.Router();
 const CarPost = require('../../models/CarPosts');
 
 const storage = multer.diskStorage({
-    destination: "../../public/images/",
+    destination: 'public/images/',
     filename: function(req, file, cb){
         cb(null,"image-" + Date.now() + path.extname(file.originalname));
     }

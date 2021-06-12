@@ -26,6 +26,11 @@ const CarPostSchema = new mongoose.Schema({
         type: String
     },
     
+    title: {
+        type: String,
+        required: true
+    },
+    
     description: {
         type: String
     },

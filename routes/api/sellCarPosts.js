@@ -35,6 +35,7 @@ router.get('/', (req, res) => {
 // @description Get single sellCarPosts by id
 // @access Public
 router.get('/:id', (req, res) => {
+    console.log('get request to sellCarPosts/:id api is arrived!');
     CarPost.findById(req.params.id)
         .then(carPost => res.json(carPost))
         .catch((err) => {
@@ -52,6 +53,7 @@ router.post('/', (req, res) => {
         const model = req.body.model;
         const carNum = req.body.carNum;
         const carPrice = req.body.carPrice;
+        const title = req.body.title;
         const description = req.body.description;
         const blockChainAddress = req.body.blockChainAddress;
         const carImg = req.file.filename;
@@ -61,6 +63,7 @@ router.post('/', (req, res) => {
             model,
             carNum,
             carPrice,
+            title,
             description,
             blockChainAddress,
             carImg
@@ -101,7 +104,8 @@ router.put(':/id', (req, res) => {
 // @route DELETE api/sellCarPosts/:id
 // @description Delete carPost by id
 // @access Public
-router.delete(':/id', (req, res) => {
+router.delete('/:id', (req, res) => {
+    console.log('Delete request to sellCarPosts/ api is arrived!')
     CarPost.findByIdAndRemove(req.params.id, req.body)
         .then(carPost => res.json({ msg: 'CarPost entry deleted successfully!'}))
         .catch(err => res.status(404).json({ error: 'No such a carPost'}));

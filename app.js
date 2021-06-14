@@ -7,7 +7,6 @@ var cors = require('cors');
 
 
 // routes
-const books = require('./routes/api/books');
 const sellCarPosts = require('./routes/api/sellCarPosts');
 const user = require('./routes/api/user')
 const parts = require('./routes/api/parts');
@@ -43,7 +42,6 @@ app.get('/', (req, res) => {
 
 
 // use Routes
-app.use('/api/books', books);
 app.use('/api/sellCarPosts', sellCarPosts);
 app.use('/api/users', user)
 app.use('/api/parts', parts)

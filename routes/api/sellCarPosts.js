@@ -43,6 +43,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
+
 // 2021-06-11 upload image test
 router.post('/', (req, res) => {
     upload(req, res, () => {
@@ -79,6 +80,29 @@ router.post('/', (req, res) => {
     })
 })
 
+
+// @route PUT api/sellCarPosts/setSupplyStatePaid/:id
+// @description Update SupplyState to Paid
+router.put('/setSupplyStateToPaid/:id', (req, res) => {
+    console.log('put request to /setSupplyStateToPaid/:id api is arrived!');
+    CarPost.findOneAndUpdate({ blockChainAddress: req.params.id }, { supplyState: "Paid" })
+        .then(carPost => res.json({ msg: 'State Updated successfully' }))
+        .catch(err =>
+            res.status(400).json({error: 'Unable to update the database'}))
+})
+
+
+// @route PUT api/sellCarPosts/setSupplyStatePaid/:id
+// @description Update SupplyState to Paid
+router.put('/setSupplyStateDelivered/:id', (req, res ) => {
+    console.log('put request to /setSupplyStateToDelivered/:id api is arrived!');
+    CarPost.findOneAndUpdate({ blockChainAddress: req.params.id }, { supplyState: "Delivered"})
+        .then(carPost => res.json({ msg: 'State Updated successfully '}))
+        .catch(err =>
+            res.status(400).json({error: 'Unable to update the database'}))
+})
+
+
 // @route PUT api/sellCarPosts/setCheckTrue/:id
 // @description Update isInitialInspected field of CarPosts model. id is Car's blockChain address
 // @access Public
@@ -93,7 +117,8 @@ router.put('/setCheckTrue/:id', (req, res) => {
 // @route PUT api/sellCarPosts/:id
 // @description Update carPost
 // @access Public
-router.put(':/id', (req, res) => {
+router.put('/:id', (req, res) => {
+    console.log('put request to /sellCarPosts/ api is arrived!')
     CarPost.findByIdAndUpdate(req.params.id, req.body)
         .then(carPost => res.json({ msg: 'Updated Successfully' }))
         .catch(err =>

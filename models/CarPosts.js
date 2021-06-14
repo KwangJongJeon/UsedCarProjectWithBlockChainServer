@@ -45,6 +45,11 @@ const CarPostSchema = new mongoose.Schema({
         default: false
     },
 
+    supplyState: {
+        type: String,
+        default: "Created"
+    },
+
     updated_date: {
         type: Date,
         default: Date.now

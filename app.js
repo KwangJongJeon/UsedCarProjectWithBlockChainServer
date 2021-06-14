@@ -8,8 +8,9 @@ var cors = require('cors');
 
 // routes
 const books = require('./routes/api/books');
-const components = require('./routes/api/components');
 const sellCarPosts = require('./routes/api/sellCarPosts');
+const user = require('./routes/api/user')
+const parts = require('./routes/api/parts');
 
 
 const app = express();
@@ -43,8 +44,9 @@ app.get('/', (req, res) => {
 
 // use Routes
 app.use('/api/books', books);
-app.use('/api/components', components);
 app.use('/api/sellCarPosts', sellCarPosts);
+app.use('/api/users', user)
+app.use('/api/parts', parts)
 
 const port = process.env.PORT || 8082;
 
